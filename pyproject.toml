@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-engineering"
+version = "0.1.0"
+description = "Portfolio of LLM projects: RAG, agents, and evals"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=1.13.0",
+    "ipykernel>=7.4.0",
+    "pyyaml>=6.0.3",
+]
+
+# Shared dev tooling only. Each project keeps its own requirements.txt.
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6",
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.6",
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "python-dotenv>=1.0",
+]
+
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["data", "notebooks", ".venv"]
+
+[tool.ruff.lint]
+# E/F = basic errors, I = import sorting, B = common bugs, UP = modern syntax
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+# Lets tests in any project do "from common.llm_client import ..."
+pythonpath = ["src"]
+testpaths = [
+    "common/tests",
+    "phase2_flagship",
+    "phase3_differentiator",
+]
+addopts = "-q"

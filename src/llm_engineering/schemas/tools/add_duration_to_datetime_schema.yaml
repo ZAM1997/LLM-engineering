@@ -1,0 +1,23 @@
+name: add_duration_to_datetime
+description:
+  Adds a duration to a datetime and returns the resulting datetime as a formatted string.
+  If no starting datetime is given, the current date and time is used.
+  Use a negative amount to subtract a duration.
+input_schema:
+  type: object
+  properties:
+    amount:
+      type: number
+      description: The size of the duration to add, for example 90 with unit minutes. Use a negative number to subtract.
+    unit:
+      type: string
+      enum: [seconds, minutes, hours, days, weeks]
+      description: The unit of time that amount is measured in.
+    datetime_str:
+      type: string
+      description: Optional starting datetime, written in the same format as date_format. If omitted, the current date and time is used.
+    date_format:
+      type: string
+      description: A strftime format string, used both to read datetime_str and to format the result.
+      default: "%Y-%m-%d %H:%M:%S"
+  required: [amount, unit]

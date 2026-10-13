@@ -1,0 +1,11 @@
+[
+  {
+    "task": "Write a Python function that takes an S3 bucket name and returns the total size, in bytes, of all objects in that bucket using boto3. Handle pagination so that buckets with more than 1,000 objects are counted correctly."
+  },
+  {
+    "task": "Write a JSON IAM policy document that allows read-only access (s3:GetObject and s3:ListBucket) to the bucket 'example-logs-bucket' and all objects within it, and denies any request that is not made over HTTPS."
+  },
+  {
+    "task": "Write a regex that matches valid AWS EC2 instance IDs. Instance IDs start with 'i-' followed by either 8 or 17 hexadecimal characters (0-9, a-f). The regex should match the full string only, not a substring within a longer string."
+  }
+]
