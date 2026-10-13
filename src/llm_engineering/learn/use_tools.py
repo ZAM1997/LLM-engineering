@@ -20,46 +20,46 @@ add_duration_to_datetime_schema = ToolParam({
 # The use of tool arise when model needs to access information from the future or real time data.
 # For example, the current time is not known until the moment the request is made, so the model needs to use the tool to get this real-time information.
 # A weather based function can be implemented similarly, where the model uses a tool to fetch real-time weather data using an API.
-# messages = []
-# messages.append({
-#     "role": "user",
-#     "content": "What is the exact time, formatted as HH:MM:SS?"
-# })
+messages = []
+messages.append({
+    "role": "user",
+    "content": "What is the exact time, formatted as HH:MM:SS?"
+})
 
-# response = client.messages.create(
-#     model = model,
-#     max_tokens=1000,
-#     messages=messages,
-#     tools=[get_current_datetime_schema],
-# )
+response = client.messages.create(
+    model = model,
+    max_tokens=1000,
+    messages=messages,
+    tools=[get_current_datetime_schema],
+)
 
-# messages.append({
-#     "role": "assistant",
-#     "content": response.content
-# })
+messages.append({
+    "role": "assistant",
+    "content": response.content
+})
 
-# tool_block = next(b for b in response.content if b.type == "tool_use")
+tool_block = next(b for b in response.content if b.type == "tool_use")
 
-# tool_output = get_current_datetime(**tool_block.input)
+tool_output = get_current_datetime(**tool_block.input)
 
-# messages.append({
-#     "role": "user",
-#     "content": [{
-#         "type": "tool_result",
-#         "tool_use_id": tool_block.id,
-#         "content": tool_output,
-#         "is_error": False
-#     }]
-# })
+messages.append({
+    "role": "user",
+    "content": [{
+        "type": "tool_result",
+        "tool_use_id": tool_block.id,
+        "content": tool_output,
+        "is_error": False
+    }]
+})
 
-# final_response = client.messages.create(
-#     model=model,
-#     max_tokens=1000,
-#     messages=messages,
-#     tools=[get_current_datetime_schema]
-# )
+final_response = client.messages.create(
+    model=model,
+    max_tokens=1000,
+    messages=messages,
+    tools=[get_current_datetime_schema]
+)
 
-# print(final_response.content[0].text)
+print(final_response.content[0].text)
 
 # Multi tool conversations
 messages = [{"role": "user", "content": "Take current date and add 103 days to it"}]

@@ -11,7 +11,7 @@ from anthropic.types import Message
 load_dotenv()
 
 API_KEY = os.getenv("ANTHROPIC_API_KEY")
-model = "claude-3-7-sonnet"
+model = "claude-haiku-5-5"
 
 def get_anthropic_client():
     API_KEY = os.getenv("ANTHROPIC_API_KEY")
@@ -24,9 +24,9 @@ def add_user_message(messages, message):
                     "content": message.content if isinstance(message, Message) else message}
     messages.append(user_message)
 
-# def add_assistant_message(messages, text):
-#     assistant_message = {"role": "assistant", "content": text}
-#     messages.append(assistant_message)
+def add_assistant_message(messages, text):
+    assistant_message = {"role": "assistant", "content": text}
+    messages.append(assistant_message)
 
 def chat(messages, model, system=None, stop_sequences=None, tools=None,
          max_tokens=1000, return_message=False):
