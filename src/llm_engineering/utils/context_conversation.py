@@ -1,8 +1,8 @@
 """This script demonstrates a simple context-aware conversation using the reusable chat function.
 It starts with an initial user question, gets a response, and then adds a follow-up question while maintaining the conversation context.
+This script is only an exmaple and might not work.
 """
 from llm_engineering.utils.helpers import add_user_message, chat, add_assistant_message
-
 
 messages = []
 

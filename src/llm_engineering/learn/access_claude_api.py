@@ -1,9 +1,9 @@
 """The following code is used to explore various functionalities of the Anthropic API and the reusable chat function.
 It starts with initializing the Anthropic client and creating a sample message. 
 It then demonstrates the use of system prompts, the reusable chat function, basic streaming, and handling JSON-only responses.
-The JSON handling could be handled by using the stop sequence argument and the add_assistant_message function commented out 
-in the helpers.py file as this API doesnt support the use of stop_sequence argument. Therefore, JSON handling needs to be done 
-manually after receiving the response.
+“JSON-only output is cleaned manually with clean_json. The course approach (prefilling the assistant turn with ```json and stopping at ```) 
+doesn’t work on Claude 4.6+ models, because they reject assistant prefill. stop_sequences itself is still supported.”in the helpers.py file 
+as this API doesnt support the use of stop_sequence argument. Therefore, JSON handling needs to be done manually after receiving the response.
 """
 
 from dotenv import load_dotenv
