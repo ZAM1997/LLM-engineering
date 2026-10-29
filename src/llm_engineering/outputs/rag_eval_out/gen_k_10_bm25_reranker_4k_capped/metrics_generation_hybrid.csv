@@ -1,0 +1,4 @@
+Chunking,Answer accuracy,Citation hit,Evidence in ctx,Quote verified,Abstain accuracy,Parse failures,Judge failures,Avg context chars
+char,0.7307692307692307,0.5,0.5,0.9545454545454546,1.0,0,0,4000.0
+section,0.8076923076923077,0.6538461538461539,0.6538461538461539,1.0,1.0,0,0,4000.0
+sentence,0.6153846153846154,0.5769230769230769,0.5769230769230769,1.0,1.0,0,0,4000.0
