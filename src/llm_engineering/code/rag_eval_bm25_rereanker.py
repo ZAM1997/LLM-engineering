@@ -55,7 +55,7 @@ COLLECTION_TEMPLATE = "{doc}_{strategy}"       # tenq_char, eightk_section, ... 
 STRATEGIES = ["char", "section", "sentence"]
 K_VALUES = [1, 3, 5, 10]
 GEN_K = 10                                     # max chunks passed to the LLM (the char budget below usually binds first)
-CTX_BUDGET = 0                              # max TOTAL chars of context sent to the LLM, same for every strategy (0/None = no limit)
+CTX_BUDGET = 0                                 # max TOTAL chars of context sent to the LLM, same for every strategy (0/None = no limit)
 MAX_CHARS_PER_CHUNK = 4000                     # safety cap on any single chunk; None = no limit
 REPORT_K = 3                                   # k used for the "Recall@k by question type" table
 BALANCE_CROSS_DOC = True                       # for doc == "both", interleave results from the two filings by rank
@@ -829,4 +829,7 @@ def main(argv=None):
 
 if __name__ == "__main__":
     # main(["--rebuild-to", str(BASE_DIR / "db" / "chroma_store_rebuilt")])
-    main()
+    # main()
+    # main(["--retrievers", "hybrid_rerank", "--strategies", "section", "sentence",
+    #      "--gen-k", "5", "--ctx-budget", "0"])
+    main(["--retrievers", "hybrid_rerank", "--strategies", "section", "--gen-k", "7", "--ctx-budget", "0"])
